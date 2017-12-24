@@ -485,7 +485,6 @@ public:
     PathImplWin32(Types... args)
     : WinPath{args...} {
     }
-    
 
     PathImplWin32 abspath() const {
         return Self{Self::cwd(), str()};
@@ -548,7 +547,6 @@ public:
        } else {
            path.rm_file();
        }
- 
        return path;
     }
 
@@ -608,7 +606,7 @@ public:
     std::vector<String> split() const {
         return crefile::split(str());
     }
-    
+
     bool exists() const {
         return PathImplWin32::exists(*this);
     }
@@ -622,7 +620,11 @@ public:
         }
         return found;
     }
-  
+
+    bool is_directory() const {
+        return FileIterImplWin32(this->str()).is_directory();
+    }
+
 private:
     static PathImplWin32 tmp_dir_impl() {
         TCHAR buffer[MAX_PATH + 1];
