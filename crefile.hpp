@@ -1017,15 +1017,16 @@ private:
     Path path_;
 };
 
-static const IterPath iter_dir(const Path& path) {
-    return IterPath{path};
-}
+// TODO Unused
+// static const IterPath iter_dir(const Path& path) {
+//     return IterPath{path};
+// }
 
 IterPath::const_iterator begin(const IterPath& path) {
     return IterPath::const_iterator{path.str()};
 }
 
-IterPath::const_iterator end(const IterPath& path) {
+IterPath::const_iterator end(const IterPath&) {
     return IterPath::const_iterator{};
 }
 
@@ -1037,7 +1038,7 @@ Path cwd() {
     return Path::cwd();
 }
 
-Path cd(const Path& path) {
+Path cd(const Path&) {
     throw NotImplementedException();
     // return Path::cd(path);
 }
